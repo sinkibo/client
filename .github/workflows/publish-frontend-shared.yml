@@ -5,8 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    working-directory: ./frontend-shared
     steps:
-      working-directory: frontend-shared
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v1
