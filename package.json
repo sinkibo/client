@@ -122,6 +122,7 @@
     "test": "gulp test",
     "typecheck": "tsc --build src/tsconfig.json",
     "report-coverage": "codecov -f coverage/coverage-final.json",
-    "version": "make clean build"
+    "version": "make clean build",
+    "setup-frontend-shared": "gulp build-frontend-shared-js && gulp link-frontend-shared"
   }
 }
