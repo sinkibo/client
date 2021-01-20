@@ -6,6 +6,9 @@
   "homepage": "https://hypothes.is",
   "bugs": "https://github.com/hypothesis/client/issues",
   "repository": "hypothesis/client",
+  "dependencies": {
+    "@hypothesis/frontend-shared": "1.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
@@ -123,6 +126,6 @@
     "typecheck": "tsc --build src/tsconfig.json",
     "report-coverage": "codecov -f coverage/coverage-final.json",
     "version": "make clean build",
-    "setup-frontend-shared": "gulp build-frontend-shared-js && gulp link-frontend-shared"
+    "setup-frontend-shared": "gulp build-frontend-shared"
   }
 }
