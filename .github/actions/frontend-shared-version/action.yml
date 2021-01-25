@@ -1,0 +1,11 @@
+name: 'Get Updated Package Version'
+inputs:
+  repository:  # id of input
+    required: true
+    default: ''
+outputs:
+  updated_version: # id of output
+    description: 'The new version of the npm package'
+runs:
+  using: 'node12'
+  main: 'index.js'

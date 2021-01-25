@@ -7,6 +7,7 @@
   "bugs": "https://github.com/hypothesis/client/issues",
   "repository": "hypothesis/client",
   "devDependencies": {
+    "@actions/core": "^1.2.6",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",

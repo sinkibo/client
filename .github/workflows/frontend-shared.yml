@@ -1,0 +1,34 @@
+name: frontend-shared package
+on:
+  release:
+    types:
+      - published
+jobs:
+  update-frontend-shared-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    # Setup .npmrc file to publish to npm
+    - name: Setup Nodejs
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install client
+      run: yarn install --frozen-lockfile
+    - name: Set up frontend-shared
+      run: yarn setup-frontend-shared
+    - name: Get new version
+      uses: ./.github/actions/frontend-shared-version
+      id: version
+      with:
+        repository: '@hypothesis/frontend-shared'
+    - name: Set new version in package.json
+      working-directory: frontend-shared
+      run: yarn version --no-git-tag-version --new-version ${{ steps.version.outputs.updated_version }}
+    - name: Publish package
+      working-directory: frontend-shared
+      run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
